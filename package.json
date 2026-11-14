@@ -1,0 +1,27 @@
+{
+  "name": "researchbridge",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js",
+    "test": "node --test --test-concurrency=1",
+    "demo:pdf": "node scripts/create-demo-pdfs.js",
+    "test:browser": "node scripts/browser-smoke.js"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "multer": "^2.0.2",
+    "pdfjs-dist": "^6.5.438",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "pdfkit": "^0.17.2",
+    "playwright": "^1.65.1"
+  }
+}

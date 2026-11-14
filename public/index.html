@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7f8f4"><title>ResearchBridge — Your next chapter</title><link rel="stylesheet" href="/styles.css"><script type="module" src="/app.js"></script></head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="/" aria-label="ResearchBridge home"><span class="brand-mark">r<span>b</span></span><span>ResearchBridge<small>YOUR NEXT CHAPTER</small></span></a>
+    <div class="workspace-label">YOUR LEARNING SPACE</div>
+    <nav aria-label="Main navigation">
+      <button class="nav-item active" data-view="chat"><span aria-hidden="true">◌</span> Academic mentor <span class="nav-dot"></span></button>
+      <button class="nav-item" data-view="plan"><span aria-hidden="true">▤</span> My bridge plan</button>
+      <button class="nav-item" data-view="profile"><span aria-hidden="true">♧</span> Academic profile</button>
+      <button class="nav-item" data-view="progress"><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20V4m0 16h16M8 15l4-5 4 2 5-7"/></svg></span> My progress</button>
+    </nav>
+    <div class="sidebar-course"><div class="eyebrow">YOUR COURSE</div><div id="course-name">A new beginning</div><p id="course-meta">Upload your material to begin.</p><button id="new-upload" class="text-button">+ Upload course material</button></div>
+    <div class="journey"><div class="eyebrow">THE BRIDGE, STEP BY STEP</div><ol id="journey-steps"><li>Understand your course</li><li>Get to know you</li><li>Build your bridge</li><li>Learn with confidence</li></ol></div>
+    <div class="sidebar-bottom"><p>From learning knowledge<br>to questioning it.</p><button id="delete-session" class="text-button muted">Reset learning profile</button><div class="student"><span class="avatar student-avatar">Y</span><div>Your learning journey<small>One step forward, every day</small></div></div></div>
+  </aside>
+  <main>
+    <header class="topbar"><button id="mobile-menu" class="icon-button" aria-label="Toggle menu" aria-expanded="false">☰</button><div><span class="breadcrumb">Your learning space <span>/</span></span> <span id="view-title">Academic mentor</span></div><span class="mode-pill" id="mode-pill">Connecting…</span></header>
+    <div id="error" role="alert" hidden><span id="error-text"></span><button id="dismiss-error" aria-label="Dismiss error">×</button></div>
+    <section id="chat-view" class="view chat-view">
+      <div class="conversation" id="conversation" aria-live="polite" aria-relevant="additions"></div>
+      <div class="composer-area">
+        <div id="interview-controls" class="interview-controls" hidden><div><span id="interview-label">Getting to know you</span><div class="mini-track"><div id="interview-fill"></div></div></div><button id="skip-question" class="text-button">Skip this question</button><button id="finish-interview" class="text-button">Generate my plan now →</button></div>
+        <div class="tools" id="learning-tools" hidden><button id="open-simplifier">Aa <span>I don’t understand the academic language</span></button><button id="start-diagnostic">◇ Readiness check</button></div>
+        <form id="chat-form" class="composer"><textarea id="message" placeholder="Tell me a little about your academic background…" rows="1" maxlength="4000" aria-label="Your message"></textarea><button id="send" type="submit" aria-label="Send message">↑</button></form>
+        <div class="composer-note" id="composer-note">A little context. A more personal path forward.</div>
+      </div>
+    </section>
+    <section id="plan-view" class="view content-view" hidden></section>
+    <section id="profile-view" class="view content-view" hidden></section>
+    <section id="progress-view" class="view content-view" hidden></section>
+  </main>
+</div>
+<dialog id="upload-dialog"><form id="upload-form"><div class="dialog-head"><div><div class="eyebrow">START WITH YOUR MATERIAL</div><h2>What are you stepping into?</h2></div><button type="button" class="close-dialog icon-button" aria-label="Close">×</button></div><p class="secondary">Upload a course outline, lecture notes, or research paper. We’ll explore the foundations together before making a plan.</p><label class="dropzone" id="dropzone"><span class="upload-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 16V3m-5 5 5-5 5 5M4 15v5h16v-5"/></svg></span><strong id="file-label">Choose a PDF or drop it here</strong><span>Text-based PDF · up to 10 MB · 80 pages</span><input id="pdf-file" type="file" accept="application/pdf,.pdf" required></label><label class="consent"><input id="consent" type="checkbox" required><span>I understand that extracted PDF content and my answers are sent to OpenRouter and its model provider in live mode. Demo mode uses local simulated responses.</span></label><p class="fine">A new upload replaces your current course, plan, and profile. Scanned documents require OCR. Your extracted text and learning profile are stored on this server.</p><button class="primary full" id="upload-submit">Explore my course →</button></form></dialog>
+<dialog id="simplify-dialog"><div class="dialog-head"><div><div class="eyebrow">ACADEMIC LANGUAGE, MADE CLEARER</div><h2>Let’s unpack that passage.</h2></div><button class="close-dialog icon-button" aria-label="Close">×</button></div><p class="secondary">Paste a passage, or select text from a source and open this tool. We’ll keep its assumptions and mathematical meaning in view.</p><form id="simplify-form"><label for="passage">Passage from your material</label><textarea id="passage" rows="5" maxlength="4000" required placeholder="Paste the sentence or paragraph you’re working through…"></textarea><button class="primary" type="submit">Help me understand →</button></form><div id="simplification-result" aria-live="polite"></div></dialog>
+<dialog id="source-dialog"><div class="dialog-head"><h2 id="source-title">Source passage</h2><button class="close-dialog icon-button" aria-label="Close">×</button></div><p class="fine">Extracted PDF text. Layout and mathematical symbols may differ from the original; check your PDF when notation is unclear.</p><div id="source-content" class="source-text"></div></dialog>
+<dialog id="reset-dialog"><div class="dialog-head"><h2>Start a new chapter?</h2><button class="close-dialog icon-button" aria-label="Close">×</button></div><p>This permanently deletes this session’s extracted PDF, messages, profile, and learning plan from this server.</p><button id="confirm-reset" class="primary danger">Delete my learning profile</button></dialog>
+</body></html>
